@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ラマルク株式会社</title>
+<meta name="description" content="ラマルク株式会社は、荻窪ツイン動物病院の院長が立ち上げた会社です。医療機関の業務の見直しと、院内システムの開発・導入・保守を支えます。">
+<meta name="theme-color" content="#F6F8F4">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ラマルク株式会社">
+<meta property="og:description" content="現場の工夫を、次の医療へ。医療機関の業務の見直しと、院内システムの開発・導入・保守を支えます。">
+<meta property="og:url" content="https://lamarck.co.jp/">
+<meta property="og:image" content="https://lamarck.co.jp/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="img/favicon.ico" sizes="any">
+<link rel="icon" href="img/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=IBM+Plex+Mono:wght@400;500&family=Zen+Kaku+Gothic+New:wght@500;700&display=swap">
+<style>
+/* ラマルク株式会社 仮サイト — 色と書体は名刺（2026-09-13 案）とロゴに合わせる。明るい配色のみ（ロゴに暗い地の版が無いため） */
+:root{
+  --paper:#F6F8F4;   /* 地：わずかに緑を含んだ白（名刺の紙） */
+  --sheet:#FFFFFF;   /* 名刺の面 */
+  --ink:#213C35;     /* 本文 */
+  --muted:#586B64;   /* 補助 */
+  --green:#14583D;   /* ロゴの深緑 */
+  --green-deep:#0F4630;
+  --copper:#AC7148;  /* ロゴの銅色 */
+  --orange:#E99A12;  /* 病院の印 */
+  --rule:#D7DED9;    /* 罫線 */
+  --display:"Zen Kaku Gothic New","Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+  --body:"BIZ UDPGothic","Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.9;padding-inline:clamp(16px,4vw,48px)}
+img{max-width:100%}
+a{color:var(--green);text-decoration-thickness:1px;text-underline-offset:.22em}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:2px solid var(--orange);outline-offset:3px;border-radius:2px}
+h1,h2,h3{font-family:var(--display);font-feature-settings:"palt";text-wrap:balance;margin:0}
+.wrap{max-width:1080px;margin-inline:auto}
+
+/* 見出し帯 */
+.site-head{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:20px}
+.brand{display:block;line-height:0}
+.brand img{height:42px;width:auto}
+.head-link{font-family:var(--display);font-weight:500;font-size:.9375rem;line-height:1;color:var(--ink);text-decoration:none;padding:.7em 1.1em;border:1px solid var(--rule);border-radius:999px;background:var(--sheet);transition:border-color .15s,color .15s}
+.head-link:hover{border-color:var(--green);color:var(--green)}
+
+/* 冒頭：左に主張、右に名刺と同じ比率の札 */
+.hero{display:grid;grid-template-columns:minmax(0,1fr);gap:40px;align-items:center;padding-block:clamp(36px,7vw,88px) clamp(52px,8vw,104px)}
+h1{font-size:clamp(2.125rem,1.25rem + 3.4vw,3.375rem);line-height:1.32;letter-spacing:.02em;font-weight:700;color:var(--green)}
+.lead{max-width:33em;margin:1.3em 0 0}
+.actions{margin:2em 0 0}
+.button{display:inline-block;background:var(--green);color:#fff;text-decoration:none;font-family:var(--display);font-weight:500;line-height:1;padding:1em 1.6em;border-radius:6px;transition:background-color .15s}
+.button:hover{background:var(--green-deep)}
+
+/* 札の大きさの基準は .card、余白と文字は内側の .card-face で札の幅に比例させる */
+.card{container-type:inline-size;width:min(100%,460px);margin:0}
+.card-face{aspect-ratio:91/55;background:var(--sheet);border-radius:3px;box-shadow:0 1px 1px rgba(33,60,53,.06),0 18px 36px -18px rgba(33,60,53,.32);display:flex;flex-direction:column;padding:28px;padding:6.6cqi 6.6cqi 5.8cqi}
+.card-top{display:flex;align-items:center;gap:10px;gap:2.4cqi}
+.card-mark{width:36px;width:8.4cqi;height:auto}
+.card-eyebrow{font-family:var(--mono);font-size:12px;font-size:2.7cqi;letter-spacing:.14em;color:var(--muted);line-height:1}
+.card-name{font-family:var(--display);font-weight:500;font-size:32px;font-size:7.6cqi;letter-spacing:.16em;line-height:1.15;margin:auto 0 0}
+.card-roman{font-family:var(--mono);font-size:12px;font-size:2.8cqi;letter-spacing:.22em;color:var(--muted);line-height:1.4;margin:6px 0 0;margin:1.4cqi 0 0}
+.card-roles{list-style:none;margin:16px 0 0;padding:14px 0 0;margin:3.8cqi 0 0;padding:3.4cqi 0 0;border-top:1px solid var(--rule);display:grid;gap:8px;gap:1.9cqi}
+.role{display:grid;grid-template-columns:4px 1fr 1fr;grid-template-columns:.9cqi 1fr 1fr;align-items:center;column-gap:10px;column-gap:2.2cqi;font-size:14px;font-size:3.15cqi;line-height:1.3}
+.role::before{content:"";height:1.1em;background:var(--orange)}
+.role-company::before{background:var(--green)}
+.org{font-family:var(--display);font-weight:500}
+.title{color:var(--muted)}
+
+/* 各節：左に見出し、右に中身 */
+.section{display:grid;grid-template-columns:minmax(0,1fr);gap:22px;padding-block:clamp(48px,7vw,88px);border-top:1px solid var(--rule)}
+h2{font-size:clamp(1.5rem,1.15rem + 1.2vw,1.875rem);line-height:1.45;font-weight:700}
+.services{display:grid;grid-template-columns:minmax(0,1fr);gap:28px 44px}
+.service{border-top:1px solid var(--rule);padding-top:18px}
+.service h3{font-size:1.1875rem;line-height:1.5;font-weight:700;color:var(--green)}
+.service p{margin:.45em 0 0}
+.prose{max-width:36em}
+.prose p{margin:0 0 1.1em}
+.prose .note{font-size:.9375rem;color:var(--muted)}
+.sign{display:grid;gap:2px;margin:1.8em 0 0;padding-top:1.2em;border-top:1px solid var(--rule);line-height:1.6}
+.sign-title{font-size:.875rem;color:var(--muted)}
+.sign-name{font-family:var(--display);font-weight:500;font-size:1.3125rem;letter-spacing:.12em}
+.sign-note{font-size:.9375rem;color:var(--muted)}
+.profile{margin:0;border-bottom:1px solid var(--rule);font-variant-numeric:tabular-nums}
+.profile div{display:grid;grid-template-columns:7.5em minmax(0,1fr);gap:2px 20px;padding-block:14px;border-top:1px solid var(--rule)}
+.profile dt{font-size:.9375rem;font-weight:700;color:var(--muted)}
+.profile dd{margin:0}
+.corp-no{font-family:var(--mono);letter-spacing:.06em}
+.mail{margin:.4em 0 0}
+.mail a{font-family:var(--mono);font-weight:500;font-size:clamp(1.25rem,1rem + 1.3vw,1.75rem);overflow-wrap:anywhere}
+
+.site-foot{display:flex;flex-wrap:wrap;align-items:center;gap:6px 20px;padding-block:28px 44px;border-top:1px solid var(--rule);color:var(--muted);font-size:.875rem;line-height:1.6}
+.site-foot p{margin:0}
+.foot-mark{width:22px;height:auto}
+
+@media (min-width:640px){.services{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:880px){
+  .hero{grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:clamp(40px,6vw,88px)}
+  .card{justify-self:end}
+  .section{grid-template-columns:13rem minmax(0,1fr);gap:48px}
+}
+@media (max-width:420px){.profile div{grid-template-columns:minmax(0,1fr)}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="wrap site-head">
+  <a class="brand" href="#top"><img src="img/lamarck-lockup.png" alt="ラマルク株式会社"></a>
+  <a class="head-link" href="#contact">お問い合わせ</a>
+</header>
+
+<main id="top" class="wrap">
+  <section class="hero" aria-labelledby="hero-title">
+    <div>
+      <h1 id="hero-title">現場の工夫を、<br>次の医療へ。</h1>
+      <p class="lead">ラマルク株式会社は、荻窪ツイン動物病院の院長が立ち上げた会社です。診療の現場で作り、毎日使っている仕組みをもとに、医療機関の業務の見直しとシステムづくりを支えます。</p>
+      <p class="actions"><a class="button" href="mailto:machida@lamarck.co.jp">メールで相談する</a></p>
+    </div>
+    <aside class="card" aria-label="代表の名刺"><div class="card-face">
+      <div class="card-top"><img class="card-mark" src="img/lamarck-mark.png" alt=""><span class="card-eyebrow">CLINIC &amp; TECHNOLOGY</span></div>
+      <p class="card-name">町田 健吾</p>
+      <p class="card-roman">KENGO MACHIDA</p>
+      <ul class="card-roles">
+        <li class="role"><span class="org">荻窪ツイン動物病院</span><span class="title">院長・獣医師</span></li>
+        <li class="role role-company"><span class="org">ラマルク株式会社</span><span class="title">代表取締役</span></li>
+      </ul>
+    </div></aside>
+  </section>
+
+  <section class="section" id="services" aria-labelledby="services-title">
+    <h2 id="services-title">できること</h2>
+    <div class="services">
+      <article class="service"><h3>業務の見直し</h3><p>受付・診療・会計・在庫など、毎日の手間がどこで生まれているかを現場で一緒に確かめ、減らし方を決めます。</p></article>
+      <article class="service"><h3>院内システムの開発と導入</h3><p>予約や記録、在庫の仕組みを医院の運用に合わせて作り、使い始めるところまで支えます。</p></article>
+      <article class="service"><h3>AIの活用</h3><p>記録の下書きや書類づくりにAIを取り入れます。内容を確かめて決めるのは、いつも医療者です。</p></article>
+      <article class="service"><h3>動かし続ける保守</h3><p>見守りと更新、使い方の質問への対応まで引き受けます。作ることより、毎日回し続けることを大切にしています。</p></article>
+    </div>
+  </section>
+
+  <section class="section" id="about" aria-labelledby="about-title">
+    <h2 id="about-title">現場で作り、<br>現場で使う</h2>
+    <div class="prose">
+      <p>荻窪ツイン動物病院では、スタッフの声をもとに、予約や記録などの院内の仕組みを自分たちで作り、手直しを続けてきました。</p>
+      <p>現場で本当に必要なことだけを、分かりやすく。ラマルクは、この考え方のまま、ほかの医療機関のお役に立つために立ち上げました。</p>
+      <p class="sign"><span class="sign-title">代表取締役</span><span class="sign-name">町田 健吾</span><span class="sign-note">荻窪ツイン動物病院 院長・獣医師</span></p>
+    </div>
+  </section>
+
+  <section class="section" id="name" aria-labelledby="name-title">
+    <h2 id="name-title">名前の由来</h2>
+    <div class="prose">
+      <p>ラマルクは、18〜19世紀のフランスの博物学者の名前です。生き物が使ううちに身につけた性質は、次の世代に受け継がれると考えました。</p>
+      <p>ひとつの医院で生まれた改善が、ほかの医院の仕組みにも受け継がれていく。ラマルクは、そうして医院ごとに進化するソフトウェアを作ります。ほかの医院へ受け継がれるのは改善された機能で、患者さんの情報ではありません。</p>
+      <p class="note">この仕組みは特許出願中です。</p>
+    </div>
+  </section>
+
+  <section class="section" id="company" aria-labelledby="company-title">
+    <h2 id="company-title">会社概要</h2>
+    <dl class="profile">
+      <div><dt>商号</dt><dd>ラマルク株式会社</dd></div>
+      <div><dt>法人番号</dt><dd class="corp-no">5011301031810</dd></div>
+      <div><dt>設立</dt><dd>2026年9月2日</dd></div>
+      <div><dt>資本金</dt><dd>500万円</dd></div>
+      <div><dt>代表取締役</dt><dd>町田 健吾</dd></div>
+      <div><dt>所在地</dt><dd>〒167-0043<br>東京都杉並区上荻一丁目23番18号</dd></div>
+      <div><dt>事業内容</dt><dd>ソフトウェアの企画・開発・保守<br>医療機関の業務改善と情報化の支援<br>人工知能を利用したシステムの開発と提供</dd></div>
+      <div><dt>関連</dt><dd><a href="https://www.ogikubo-animal.com/">荻窪ツイン動物病院</a></dd></div>
+    </dl>
+  </section>
+
+  <section class="section" id="contact" aria-labelledby="contact-title">
+    <h2 id="contact-title">お問い合わせ</h2>
+    <div>
+      <p style="margin:0">ご相談やご質問は、メールでお送りください。</p>
+      <p class="mail"><a href="mailto:machida@lamarck.co.jp">machida@lamarck.co.jp</a></p>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap site-foot">
+  <img class="foot-mark" src="img/lamarck-mark.png" alt="">
+  <p>© 2026 ラマルク株式会社</p>
+  <p>サービスの詳しいご案内は、準備が整いしだい掲載します。</p>
+</footer>
+</body>
+</html>
