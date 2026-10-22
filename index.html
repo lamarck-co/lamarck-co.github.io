@@ -76,7 +76,7 @@ h1{font-size:clamp(2.125rem,1.25rem + 3.4vw,3.375rem);line-height:1.32;letter-sp
 .org{font-family:var(--display);font-weight:500}
 .title{color:var(--muted)}
 
-/* 各節：左に見出し、右に中身 */
+/* 各節：見出しの下に中身 */
 .section{display:grid;grid-template-columns:minmax(0,1fr);gap:22px;padding-block:clamp(48px,7vw,88px);border-top:1px solid var(--rule)}
 h2{font-size:clamp(1.5rem,1.15rem + 1.2vw,1.875rem);line-height:1.45;font-weight:700}
 .services{display:grid;grid-template-columns:minmax(0,1fr);gap:28px 44px}
@@ -106,7 +106,7 @@ h2{font-size:clamp(1.5rem,1.15rem + 1.2vw,1.875rem);line-height:1.45;font-weight
 @media (min-width:880px){
   .hero{grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:clamp(40px,6vw,88px)}
   .card{justify-self:end}
-  .section{grid-template-columns:13rem minmax(0,1fr);gap:48px}
+  /* 各節は見出しの下に本文が続く形（左右に並べない・院長 2026-10-22） */
 }
 @media (max-width:420px){.profile div{grid-template-columns:minmax(0,1fr)}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
