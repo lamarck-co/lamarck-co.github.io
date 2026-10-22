@@ -49,6 +49,7 @@ h1,h2,h3{font-family:var(--display);font-feature-settings:"palt";text-wrap:balan
 .site-head{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:20px}
 .brand{display:block;line-height:0}
 .brand img{height:42px;width:auto}
+.head-links{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
 .head-link{font-family:var(--display);font-weight:500;font-size:.9375rem;line-height:1;color:var(--ink);text-decoration:none;padding:.7em 1.1em;border:1px solid var(--rule);border-radius:999px;background:var(--sheet);transition:border-color .15s,color .15s}
 .head-link:hover{border-color:var(--green);color:var(--green)}
 
@@ -114,7 +115,7 @@ h2{font-size:clamp(1.5rem,1.15rem + 1.2vw,1.875rem);line-height:1.45;font-weight
 <body>
 <header class="wrap site-head">
   <a class="brand" href="#top"><img src="img/lamarck-lockup.png" alt="ラマルク株式会社"></a>
-  <a class="head-link" href="#contact">お問い合わせ</a>
+  <nav class="head-links" aria-label="サイト内"><a class="head-link" href="security/">セキュリティ</a><a class="head-link" href="#contact">お問い合わせ</a></nav>
 </header>
 
 <main id="top" class="wrap">
@@ -189,6 +190,7 @@ h2{font-size:clamp(1.5rem,1.15rem + 1.2vw,1.875rem);line-height:1.45;font-weight
 <footer class="wrap site-foot">
   <img class="foot-mark" src="img/lamarck-mark.png" alt="">
   <p>© 2026 ラマルク株式会社</p>
+  <p><a href="security/">セキュリティへの取り組みと最新情報</a></p>
   <p>サービスの詳しいご案内は、準備が整いしだい掲載します。</p>
 </footer>
 </body>
