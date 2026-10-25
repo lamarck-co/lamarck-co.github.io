@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://lamarck.co.jp/sitemap.xml
