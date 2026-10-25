@@ -61,7 +61,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .num{background:var(--sheet);border:1px solid var(--line);border-radius:18px;padding:24px}
 .num b{display:block;font:700 clamp(34px,4vw,46px)/1 var(--fl);color:var(--green);letter-spacing:-.01em}
 .num b small{font-size:.42em;margin-left:4px;color:var(--ink)}
-.num span{display:block;margin-top:10px;font-weight:700;font-size:15px}
+.num .lbl{display:block;margin-top:10px;font-weight:700;font-size:15px}
 .num p{margin:6px 0 0;color:var(--sub);font-size:13.5px;line-height:1.75}
 
 /* 料金 */
@@ -133,3 +133,137 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
   .table th{width:36%}
   .table th,.table td{padding:12px 14px}
 }
+
+/* ===== 動きと変化（2026-10-25 追加） ===== */
+.menu a{position:relative;padding-block:4px}
+.menu a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;border-radius:2px;background:var(--green);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.menu a:hover::after,.menu a[aria-current="page"]::after{transform:scaleX(1)}
+.cta{position:relative;overflow:hidden;transition:transform .2s}
+.cta::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);transform:translateX(-120%);transition:transform .7s}
+.cta:hover::after{transform:translateX(120%)}
+.cta:hover{transform:translateY(-1px)}
+.btn{transition:transform .2s,box-shadow .2s,background .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(19,32,26,.16)}
+.more::after{transition:transform .25s}
+.more:hover::after{transform:translateX(5px)}
+
+/* カーソルの光 */
+.spot{position:relative;isolation:isolate;transition:transform .3s,border-color .3s,box-shadow .3s}
+.spot::before{content:"";position:absolute;inset:0;border-radius:inherit;z-index:-1;opacity:0;transition:opacity .3s;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(31,122,85,.11),transparent 45%)}
+@media (pointer:fine){.spot:hover{transform:translateY(-4px);border-color:#BFD8C9;box-shadow:0 18px 40px rgba(19,32,26,.10)}.spot:hover::before{opacity:1}}
+
+/* スクロールで現れる */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* 見出しの色 */
+h1 em,h2 em{font-style:normal;color:var(--green)}
+h1 .c,h2 .c{color:var(--copper);font-family:var(--fl)}
+
+/* 節の背景を変える */
+.sec.white{background:var(--sheet)}
+.sec.white .box,.sec.white .num,.sec.white .steps li{background:var(--bg)}
+.sec.band{background:var(--green);color:#fff;border-top:0}
+.sec.band h2{color:#fff}.sec.band h2 em{color:#9FE0BE}
+.sec.band .kick{color:#9FE0BE}.sec.band .kick::before{background:#9FE0BE}
+.sec.band .intro,.sec.band .note{color:#CFE3D8}
+.sec.band .num{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.16)}
+.sec.band .num b{color:#fff}.sec.band .num b small{color:#E2B58A}
+.sec.band .num .lbl{color:#fff}.sec.band .num p{color:#CFE3D8}
+.sec.band .spot::before{background:radial-gradient(380px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.12),transparent 45%)}
+.sec.mint{background:linear-gradient(180deg,#EAF4EE,var(--bg))}
+.sec + .sec.band,.sec.band + .sec{border-top:0}
+
+/* 職種の色 */
+.box .ic.r1{background:#E2EFE7}.box .ic.r2{background:#E4F0FA}.box .ic.r3{background:#E3F6F4}.box .ic.r4{background:#F6EADF}.box .ic.r5{background:#EFE9F7}.box .ic.r6{background:#FBF1D9}
+.box .who.r2{color:#1F74B5}.box .who.r3{color:#12857D}.box .who.r4{color:#93522B}.box .who.r5{color:#5E4392}.box .who.r6{color:#9A7310}
+
+/* 左右に分ける（挿絵つき） */
+.split{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:48px;align-items:center;margin-top:12px}
+.split.rev{grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr)}
+.split.rev > .ill{order:-1}
+.ill{position:relative}
+.ill img{display:block;width:100%;height:auto;mix-blend-mode:multiply}
+.ill::after{content:"";position:absolute;inset:auto 12% 4% 12%;height:14%;border-radius:50%;background:radial-gradient(closest-side,rgba(19,32,26,.10),transparent);z-index:-1}
+.split .list{display:grid;gap:12px;margin-top:24px}
+
+/* 画面ツアー */
+.tour{margin-top:36px;background:var(--sheet);border:1px solid var(--line);border-radius:28px;padding:22px;box-shadow:var(--shadow)}
+.tabs{position:relative;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding:4px;background:var(--bg);border-radius:999px}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{position:relative;z-index:1;flex:none;border:0;background:none;padding:11px 18px;border-radius:999px;font:700 14px/1 var(--fh);color:var(--sub);cursor:pointer;transition:color .3s}
+.tabs button:hover{color:var(--ink)}
+.tabs button[aria-selected="true"]{color:#fff}
+.tabs .ink{position:absolute;left:0;top:4px;bottom:4px;border-radius:999px;background:var(--green);transition:transform .45s cubic-bezier(.3,.8,.2,1),width .45s cubic-bezier(.3,.8,.2,1)}
+.panes{position:relative;margin-top:22px;min-height:470px}
+.pane{position:absolute;inset:0;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:36px;align-items:center;opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .5s,transform .5s,visibility 0s .5s}
+.pane.on{opacity:1;visibility:visible;transform:none;transition:opacity .5s,transform .5s}
+.pane h3{font-size:24px;line-height:1.4;margin:10px 0 0}
+.pane p{color:var(--sub);font-size:15px;margin:12px 0 0}
+.pane .tagline{margin-top:16px}
+.shot{display:grid;place-items:center;height:450px;background:radial-gradient(70% 70% at 60% 40%,#EAF4EE,var(--bg));border-radius:20px;overflow:hidden}
+.browser{width:92%;border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 24px 50px rgba(19,32,26,.18);border:1px solid var(--line)}
+.browser .bar{display:flex;gap:6px;padding:9px 12px;background:#F1F3F1;border-bottom:1px solid var(--line)}
+.browser .bar i{width:9px;height:9px;border-radius:50%;background:#D5DBD7}
+.browser img{display:block;width:100%;max-height:360px;object-fit:cover;object-position:top}
+.phone-f{height:420px;aspect-ratio:9/19.5;max-width:100%;border-radius:34px;padding:9px;background:#1E2A38;box-shadow:0 24px 50px rgba(19,32,26,.25)}
+.phone-f img{display:block;width:100%;height:100%;object-fit:cover;object-position:top;border-radius:26px;background:#fff}
+
+/* 導入の流れ（横の線でつなぐ） */
+.timeline{list-style:none;margin:40px 0 0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;position:relative}
+.timeline::before{content:"";position:absolute;left:10%;right:10%;top:22px;height:2px;background:linear-gradient(90deg,var(--green),var(--copper))}
+.timeline li{position:relative;text-align:center}
+.timeline li i{display:grid;place-items:center;width:46px;height:46px;margin:0 auto;border-radius:50%;background:var(--sheet);border:2px solid var(--green);font:700 14px/1 var(--fl);font-style:normal;color:var(--green);position:relative}
+.timeline li b{display:block;margin-top:14px;font-size:15px}
+.timeline li p{margin:6px 0 0;font-size:13px;color:var(--sub)}
+
+/* 料金の見せ方 */
+.bigprice{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-top:28px}
+.bigprice b{font:700 clamp(56px,8vw,104px)/1 var(--fl);letter-spacing:-.03em}
+.bigprice span{font-size:18px;color:var(--sub)}
+.bigprice .add{font-size:16px;color:var(--ink);background:var(--sheet);border:1px solid var(--line);padding:8px 14px;border-radius:999px}
+
+/* 下層ページの見出しに挿絵 */
+.page-head{position:relative;overflow:hidden;background:radial-gradient(50% 80% at var(--gx,80%) var(--gy,10%),#FFFFFF,var(--bg) 70%)}
+.page-head .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:32px;align-items:center}
+.page-head .ill img{max-height:300px;object-fit:contain}
+.page-head.noill .wrap{display:block}
+
+@media (max-width:860px){
+  .split,.split.rev{grid-template-columns:1fr;gap:20px}
+  .split.rev > .ill{order:0}
+  .pane{grid-template-columns:1fr;gap:16px}
+  .panes{min-height:740px}
+  .shot{height:400px}
+  .timeline{grid-template-columns:1fr;gap:18px;text-align:left}
+  .timeline::before{left:22px;right:auto;top:10px;bottom:10px;width:2px;height:auto;background:linear-gradient(180deg,var(--green),var(--copper))}
+  .timeline li{display:grid;grid-template-columns:46px 1fr;gap:4px 14px;text-align:left}
+  .timeline li i{margin:0;grid-row:span 2}
+  .timeline li b{margin-top:2px}
+  .page-head .wrap{grid-template-columns:1fr}
+  .page-head .ill img{max-height:200px}
+}
+
+/* 線のアイコン（Lucide・ISC） */
+.ico{width:22px;height:22px;flex:none;stroke:currentColor}
+.box .ic{color:var(--green)}
+.box .ic.r2{color:#1F74B5}.box .ic.r3{color:#12857D}.box .ic.r4{color:#93522B}.box .ic.r5{color:#5E4392}.box .ic.r6{color:#9A7310}
+h3.ih{display:flex;align-items:center;gap:10px}
+h3.ih .ico{color:var(--green);width:24px;height:24px}
+.rc .ic .ico{width:16px;height:16px;color:#fff}
+.tasks{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
+.task{display:inline-flex;align-items:center;gap:8px;padding:11px 16px;border-radius:999px;background:var(--sheet);border:1px solid var(--line);font-weight:700;font-size:14.5px;transition:transform .25s,border-color .25s}
+.task .ico{width:18px;height:18px;color:var(--green)}
+.task:hover{transform:translateY(-2px);border-color:#BFD8C9}
+
+/* 紹介動画と、見たあとに出る費用 */
+.movie{margin-top:28px;border-radius:22px;overflow:hidden;background:#000;box-shadow:var(--shadow);aspect-ratio:16/9}
+.movie video{display:block;width:100%;height:100%}
+.gate{position:relative}
+.gate .gate-msg{display:none}
+.gate.locked .gate-body{filter:blur(14px);pointer-events:none;user-select:none}
+.gate.locked .gate-msg{display:flex;position:absolute;inset:0;z-index:2;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:24px}
+.gate-msg b{font-size:clamp(17px,2vw,22px);background:var(--sheet);padding:14px 22px;border-radius:16px;box-shadow:var(--shadow)}
+.gate-msg button{border:0;background:none;color:var(--sub);text-decoration:underline;font:500 13.5px/1 var(--fh);cursor:pointer}
+.gate-body{transition:filter .6s}
