@@ -196,9 +196,10 @@ h1 .c,h2 .c{color:var(--copper);font-family:var(--fl)}
 .tabs button:hover{color:var(--ink)}
 .tabs button[aria-selected="true"]{color:#fff}
 .tabs .ink{position:absolute;left:0;top:4px;bottom:4px;border-radius:999px;background:var(--green);transition:transform .45s cubic-bezier(.3,.8,.2,1),width .45s cubic-bezier(.3,.8,.2,1)}
-.panes{position:relative;margin-top:22px;min-height:470px}
-.pane{position:absolute;inset:0;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:36px;align-items:center;opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .5s,transform .5s,visibility 0s .5s}
-.pane.on{opacity:1;visibility:visible;transform:none;transition:opacity .5s,transform .5s}
+.panes{position:relative;margin-top:22px;display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+.panes::-webkit-scrollbar{display:none}
+.pane{flex:0 0 100%;min-width:0;scroll-snap-align:center;scroll-snap-stop:always;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:36px;align-items:center;opacity:.45;transition:opacity .4s}
+.pane.on{opacity:1}
 .pane h3{font-size:24px;line-height:1.4;margin:10px 0 0}
 .pane p{color:var(--sub);font-size:15px;margin:12px 0 0}
 .pane .tagline{margin-top:16px}
@@ -234,7 +235,7 @@ h1 .c,h2 .c{color:var(--copper);font-family:var(--fl)}
   .split,.split.rev{grid-template-columns:1fr;gap:20px}
   .split.rev > .ill{order:0}
   .pane{grid-template-columns:1fr;gap:16px}
-  .panes{min-height:740px}
+  .pane{flex-basis:88%;align-content:start}
   .shot{height:400px}
   .timeline{grid-template-columns:1fr;gap:18px;text-align:left}
   .timeline::before{left:22px;right:auto;top:10px;bottom:10px;width:2px;height:auto;background:linear-gradient(180deg,var(--green),var(--copper))}
@@ -267,3 +268,21 @@ h3.ih .ico{color:var(--green);width:24px;height:24px}
 .gate-msg b{font-size:clamp(17px,2vw,22px);background:var(--sheet);padding:14px 22px;border-radius:16px;box-shadow:var(--shadow)}
 .gate-msg button{border:0;background:none;color:var(--sub);text-decoration:underline;font:500 13.5px/1 var(--fh);cursor:pointer}
 .gate-body{transition:filter .6s}
+
+/* メニューと、先頭へ戻るボタン（スマホは指が届く下に） */
+.dock{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:25;display:flex;align-items:center;gap:10px}
+.dock button{display:inline-flex;align-items:center;justify-content:center;height:48px;padding:0 18px;border-radius:999px;border:1px solid var(--line);background:var(--sheet);color:var(--ink);font:700 14px/1 var(--fh);box-shadow:var(--shadow);cursor:pointer}
+.dock .menu-btn{background:var(--ink);border-color:var(--ink);color:#fff}
+.dock .up{width:48px;padding:0;font-size:18px;opacity:0;pointer-events:none;transform:translateY(8px);transition:opacity .3s,transform .3s}
+.dock .up.on{opacity:1;pointer-events:auto;transform:none}
+@media (min-width:861px){.dock .menu-btn{display:none}}
+.sheet{position:fixed;inset:0;z-index:60;display:flex;align-items:flex-end;background:rgba(19,32,26,.38)}
+.sheet[hidden]{display:none}
+.sheet nav{width:100%;max-height:82vh;overflow:auto;background:var(--sheet);border-radius:22px 22px 0 0;padding-block:8px calc(16px + env(safe-area-inset-bottom,0px));padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.sheet-h{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
+.sheet-h b{font-size:15px;color:var(--sub)}
+.sheet .sheet-x{margin-left:auto;flex:none;padding:0;width:44px;height:44px;border:0;border-radius:50%;background:var(--bg);color:var(--ink);font-size:22px;cursor:pointer}
+.sheet a{display:block;padding:15px 4px;border-top:1px solid var(--line);font-weight:700;font-size:16px;text-decoration:none;color:var(--ink)}
+.sheet a[aria-current="page"]{color:var(--green)}
+.sheet a.req{margin-top:12px;border:0;border-radius:999px;background:var(--green);color:#fff;text-align:center}
+@media (min-width:861px){.sheet{align-items:center;justify-content:center}.sheet nav{width:420px;border-radius:22px}}

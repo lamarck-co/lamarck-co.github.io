@@ -48,22 +48,57 @@
     targets.forEach(el => io.observe(el));
   } else targets.forEach(el => el.classList.add('in'));
 
-  // 画面ツアー：タブで切り替え・自動で次へ（触っている間は止める）
+  // 画面ツアー：指で横に動かす・名前を押す・パソコンでは自動で次へ（触ったら止める）
   document.querySelectorAll('.tour').forEach(tour => {
-    const tabs = [...tour.querySelectorAll('.tabs button')], panes = [...tour.querySelectorAll('.pane')], bar = tour.querySelector('.tabs .ink');
-    let cur = 0, timer = null, hold = false;
-    const show = i => {
-      cur = (i + tabs.length) % tabs.length;
+    const tabs = [...tour.querySelectorAll('.tabs button')], panes = [...tour.querySelectorAll('.pane')], bar = tour.querySelector('.tabs .ink'), sc = tour.querySelector('.panes');
+    let cur = -1, timer = null, hold = false, user = false, raf = 0;
+    const mark = i => {
+      if (i === cur) return;
+      cur = i;
       tabs.forEach((t, k) => t.setAttribute('aria-selected', k === cur));
       panes.forEach((p, k) => p.classList.toggle('on', k === cur));
       const t = tabs[cur]; bar.style.width = t.offsetWidth + 'px'; bar.style.transform = `translateX(${t.offsetLeft}px)`;
       const w = t.parentElement; w.scrollTo({ left: t.offsetLeft - (w.clientWidth - t.offsetWidth) / 2, behavior: reduce ? 'auto' : 'smooth' });
     };
-    const loop = () => { clearTimeout(timer); if (!reduce) timer = setTimeout(() => { if (!hold) show(cur + 1); loop(); }, 6000); };
-    tabs.forEach((t, k) => t.addEventListener('click', () => { show(k); loop(); }));
+    const go = (i, smooth = true) => {
+      i = (i + panes.length) % panes.length;
+      const p = panes[i];
+      sc.scrollTo({ left: p.offsetLeft - (sc.clientWidth - p.offsetWidth) / 2, behavior: smooth && !reduce ? 'smooth' : 'auto' });
+      mark(i);
+    };
+    sc.addEventListener('scroll', () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const mid = sc.scrollLeft + sc.clientWidth / 2;
+        let best = 0, d = Infinity;
+        panes.forEach((p, k) => { const e = Math.abs(p.offsetLeft + p.offsetWidth / 2 - mid); if (e < d) { d = e; best = k; } });
+        mark(best);
+      });
+    }, { passive: true });
+    const stop = () => { user = true; clearTimeout(timer); };
+    sc.addEventListener('touchstart', stop, { passive: true });
+    sc.addEventListener('wheel', e => { if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) stop(); }, { passive: true });
+    tabs.forEach((t, k) => t.addEventListener('click', () => { stop(); go(k); }));
+    const loop = () => { clearTimeout(timer); if (!reduce && fine && !user) timer = setTimeout(() => { if (!hold && !user) go(cur + 1); loop(); }, 6000); };
     tour.addEventListener('pointerenter', () => hold = true);
     tour.addEventListener('pointerleave', () => hold = false);
-    addEventListener('resize', () => show(cur));
-    show(0); loop();
+    addEventListener('resize', () => go(cur, false));
+    mark(0); loop();
   });
+
+  // メニュー（スマホ）と、先頭へ戻るボタン
+  const up = document.querySelector('.dock .up'), mb = document.querySelector('.dock .menu-btn'), sheet = document.getElementById('sheet');
+  if (up) {
+    const vis = () => up.classList.toggle('on', scrollY > 600);
+    addEventListener('scroll', vis, { passive: true }); vis();
+    up.addEventListener('click', () => scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }));
+  }
+  if (mb && sheet) {
+    const here = location.pathname.split('/').pop() || 'index.html';
+    sheet.querySelectorAll('a').forEach(a => { if (a.getAttribute('href') === here) a.setAttribute('aria-current', 'page'); });
+    const open = v => { sheet.hidden = !v; mb.setAttribute('aria-expanded', v); };
+    mb.addEventListener('click', () => open(true));
+    sheet.addEventListener('click', e => { if (e.target === sheet || e.target.closest('.sheet-x') || e.target.closest('a')) open(false); });
+    addEventListener('keydown', e => { if (e.key === 'Escape') open(false); });
+  }
 })();
