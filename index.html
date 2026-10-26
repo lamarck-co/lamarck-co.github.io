@@ -35,7 +35,6 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .brand img{width:28px}
 .menu{margin-left:auto;display:flex;gap:22px;font-size:13px;color:var(--sub);font-weight:500}
 .cta{padding:10px 16px;border-radius:999px;background:var(--ink);color:#fff;font-weight:700;font-size:13px;white-space:nowrap}
-.motion{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:var(--sheet);color:var(--ink);font-size:10px;cursor:pointer}
 
 .styles{position:fixed;z-index:40;left:max(12px,env(safe-area-inset-left,0px));bottom:calc(12px + env(safe-area-inset-bottom,0px));display:flex;flex-wrap:wrap;gap:4px 10px;padding:6px 8px;border-radius:18px;
   background:rgba(19,32,26,.82);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);max-width:calc(100% - 24px);touch-action:manipulation}
@@ -175,7 +174,6 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
   <a class="brand" href="index.html"><img src="assets/img/lamarck-mark.png" alt="" width="28" height="28">LAMARCK</a>
   <nav class="menu" aria-label="サイト内"><a href="system.html">しくみ</a><a href="effect.html">導入の効果</a><a href="price.html">導入と費用</a><a href="trust.html">安心</a><a href="flow.html">導入の流れ</a><a href="company.html">会社</a></nav>
   <a class="cta" href="request.html">資料を受け取る</a>
-  <button class="motion" id="motion" aria-pressed="false" aria-label="動きを止める"><span id="mIcon">❚❚</span></button>
 </header>
 
 <nav class="styles" id="styles" hidden aria-label="試作の切り替え">
@@ -422,10 +420,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
   }
   addEventListener('pointermove', e => { mx = e.clientX / innerWidth - .5; my = e.clientY / innerHeight - .5; });
 
-  const btn = $('motion');
-  const setPaused = v => { document.body.classList.toggle('paused', v); btn.setAttribute('aria-pressed', v); $('mIcon').textContent = v ? '▶' : '❚❚'; };
-  btn.addEventListener('click', () => setPaused(!document.body.classList.contains('paused')));
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) setPaused(true);
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.body.classList.add('paused');
   const skip = $('skip');
   skip.addEventListener('click', () => { const t = $('after').getBoundingClientRect().top + scrollY - 70; scrollTo({ top: t, behavior: 'instant' }); });
   const skipWatch = () => { skip.classList.toggle('gone', $('after').getBoundingClientRect().top < innerHeight * .9); requestAnimationFrame(skipWatch); };
