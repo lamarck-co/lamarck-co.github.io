@@ -1,5 +1,5 @@
 {
-"updated": "2026-10-30T07:50",
+"updated": "2026-10-30T08:57",
 "days": 45,
 "items": [
 {
@@ -333,6 +333,21 @@
 "topic": null
 },
 {
+"id": "a89cedd8f0929e20",
+"date": "2026-10-29",
+"source": "Security NEXT",
+"kind": "ニュース",
+"category": "悪用の確認",
+"title": "米当局、Ciscoセキュリティ製品と「GitLab」の脆弱性悪用に警鐘",
+"title_ja": "米当局、Ciscoセキュリティ製品と「GitLab」の脆弱性悪用に警鐘",
+"summary_ja": "",
+"link": "https://www.security-next.com/192196",
+"our_relation": "no",
+"our_status": null,
+"our_status_at": null,
+"topic": null
+},
+{
 "id": "f724a2be32191872",
 "date": "2026-10-29",
 "source": "JVN",
@@ -419,7 +434,7 @@
 "link": "https://wordpress.org/news/2026/10/wordpress-7-1-4/",
 "our_relation": "yes",
 "our_status": "対応済み",
-"our_status_at": "2026-10-22 08:21",
+"our_status_at": "2026-10-30 08:57",
 "topic": "WordPress 7.1.x のセキュリティ更新"
 },
 {
@@ -522,21 +537,6 @@
 "title_ja": "愛知県婚活サイトに無関係の個人情報が誤公開",
 "summary_ja": "愛知県運営の婚活情報サイト「あいこんナビ」において、無関係の個人情報が誤って公開されていたことが判明した。",
 "link": "https://www.security-next.com/191655",
-"our_relation": "no",
-"our_status": null,
-"our_status_at": null,
-"topic": null
-},
-{
-"id": "b6d78e30423f123f",
-"date": "2026-10-28",
-"source": "Security NEXT",
-"kind": "ニュース",
-"category": "悪用の確認",
-"title": "Ciscoの「ASA」「FTD」にDoS脆弱性 - すでに悪用も",
-"title_ja": "CiscoのASA・FTDにDoS脆弱性、悪用をすでに確認",
-"summary_ja": "Cisco Secure Firewall ASAおよびFTDにサービス拒否（DoS）の脆弱性が見つかり、すでに実際の攻撃への悪用が確認されている。",
-"link": "https://www.security-next.com/192131",
 "our_relation": "no",
 "our_status": null,
 "our_status_at": null,
@@ -762,10 +762,10 @@
 "title_ja": "TailscaleのHTTP/2で誤った権限値が送信される脆弱性",
 "summary_ja": "Tailscale ServeのHTTP/2環境でマウントをまたぐ際に誤ったApp-Capabilities値が送信される可能性がある脆弱性が報告された。",
 "link": "https://tailscale.com/security-bulletins/#ts-2026-017",
-"our_relation": "check",
-"our_status": null,
-"our_status_at": null,
-"topic": null
+"our_relation": "yes",
+"our_status": "影響なし",
+"our_status_at": "2026-10-30 08:57",
+"topic": "Tailscale の SSH 機能・Serve の脆弱性（TS-2026-014〜017）"
 },
 {
 "id": "a496821c142fd28b",
@@ -777,10 +777,10 @@
 "title_ja": "TailscaleのUnixバックエンドが特権ソケットに到達できる脆弱性",
 "summary_ja": "Tailscale ServeのUnixドメインソケット経由で、tailscaledのローカルAPI等の特権ソケットに到達できる脆弱性が存在することが報告された。",
 "link": "https://tailscale.com/security-bulletins/#ts-2026-016",
-"our_relation": "check",
-"our_status": null,
-"our_status_at": null,
-"topic": null
+"our_relation": "yes",
+"our_status": "影響なし",
+"our_status_at": "2026-10-30 08:57",
+"topic": "Tailscale の SSH 機能・Serve の脆弱性（TS-2026-014〜017）"
 },
 {
 "id": "3fa03bdd42093e47",
@@ -792,10 +792,10 @@
 "title_ja": "TailscaleのSSHソケット転送でroot専用ソケットへのアクセスが可能",
 "summary_ja": "Tailscale SSHのUnixソケット転送においてパスの検証が不十分なため、認証済みピアがroot専用ソケットへアクセスできる可能性がある。",
 "link": "https://tailscale.com/security-bulletins/#ts-2026-014",
-"our_relation": "check",
-"our_status": null,
-"our_status_at": null,
-"topic": null
+"our_relation": "yes",
+"our_status": "影響なし",
+"our_status_at": "2026-10-30 08:57",
+"topic": "Tailscale の SSH 機能・Serve の脆弱性（TS-2026-014〜017）"
 },
 {
 "id": "597398080e88ae15",
@@ -807,10 +807,10 @@
 "title_ja": "TailscaleのSSHセッション処理でDoSを招くメモリ枯渇の脆弱性",
 "summary_ja": "Tailscale SSHの組み込みサーバーにおいて、認証済みピアがメモリを際限なく消費させDoS状態を引き起こせる可能性があると報告された。",
 "link": "https://tailscale.com/security-bulletins/#ts-2026-015",
-"our_relation": "check",
-"our_status": null,
-"our_status_at": null,
-"topic": null
+"our_relation": "yes",
+"our_status": "影響なし",
+"our_status_at": "2026-10-30 08:57",
+"topic": "Tailscale の SSH 機能・Serve の脆弱性（TS-2026-014〜017）"
 },
 {
 "id": "ebfb9852b8ec5f70",
@@ -1379,7 +1379,7 @@
 "link": "https://tailscale.com/security-bulletins/#ts-2026-013",
 "our_relation": "yes",
 "our_status": "対応予定",
-"our_status_at": "2026-10-22 11:37",
+"our_status_at": "2026-10-30 08:57",
 "topic": "eMudhra の中間証明書の秘密鍵の漏えい（Tailscale TS-2026-013 ほか）"
 },
 {
@@ -2369,7 +2369,7 @@
 "link": "https://wordpress.org/news/2026/10/wordpress-7-1-3-maintenance-and-security-release/",
 "our_relation": "yes",
 "our_status": "対応済み",
-"our_status_at": "2026-10-22 08:21",
+"our_status_at": "2026-10-30 08:57",
 "topic": "WordPress 7.1.x のセキュリティ更新"
 },
 {
@@ -2519,7 +2519,7 @@
 "link": "https://wordpress.org/news/2026/09/wordpress-7-1-2-release/",
 "our_relation": "yes",
 "our_status": "対応済み",
-"our_status_at": "2026-10-22 08:21",
+"our_status_at": "2026-10-30 08:57",
 "topic": "WordPress 7.1.x のセキュリティ更新"
 },
 {
@@ -2549,7 +2549,7 @@
 "link": "https://wordpress.org/news/2026/09/wordpress-7-1-1-maintenance-and-security-release/",
 "our_relation": "yes",
 "our_status": "対応済み",
-"our_status_at": "2026-10-22 08:21",
+"our_status_at": "2026-10-30 08:57",
 "topic": "WordPress 7.1.x のセキュリティ更新"
 },
 {
