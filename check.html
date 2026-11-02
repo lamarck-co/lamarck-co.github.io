@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="ja"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>こんなことで困っていませんか｜ラマルク</title>
+<meta name="description" content="動物病院の毎日の困りごとを、職種ごとに並べました。当てはまるものを押していくと、最後にラマルクでできることが分かります。">
+<link rel="canonical" href="https://lamarck.co.jp/check.html">
+<meta property="og:type" content="website"><meta property="og:site_name" content="ラマルク株式会社"><meta property="og:title" content="こんなことで困っていませんか｜ラマルク"><meta property="og:description" content="動物病院の毎日の困りごとを、職種ごとに並べました。当てはまるものを押していくと、最後にラマルクでできることが分かります。"><meta property="og:url" content="https://lamarck.co.jp/check.html"><meta property="og:image" content="https://lamarck.co.jp/assets/img/og.png"><meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon-192.png"><link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon-96.png"><link rel="icon" type="image/png" sizes="48x48" href="assets/img/favicon-48.png"><link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@400;500;700&family=IBM+Plex+Sans:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="assets/site.css"><script src="assets/site.js" defer></script><style>
+.game{display:grid;gap:14px;margin-top:22px}
+.grp{background:var(--sheet);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.grp>summary{list-style:none;display:flex;align-items:center;gap:14px;padding:16px 20px;cursor:pointer;scroll-margin-top:90px}
+.grp>summary::-webkit-details-marker{display:none}
+.grp>summary .av{width:44px;height:44px;border-radius:12px;flex:none;display:grid;place-items:center;background:var(--mint);color:var(--green);overflow:hidden}
+.grp>summary .av img{width:100%;height:100%}
+.grp>summary b{font-size:17px;flex:1;min-width:0}
+.grp>summary .cnt{font:700 14px/1 var(--fl);color:var(--sub);background:var(--bg);border-radius:999px;padding:7px 12px;white-space:nowrap}
+.grp.has>summary .cnt{background:var(--green);color:#fff}
+.grp>summary .chev{width:10px;height:10px;border-right:2px solid var(--sub);border-bottom:2px solid var(--sub);transform:rotate(45deg);transition:transform .2s;flex:none;margin:0 4px 4px}
+.grp[open]>summary .chev{transform:rotate(-135deg);margin-bottom:-4px}
+.grp-body{display:grid;gap:10px;padding:0 20px 20px}
+.chk-it{scroll-margin-top:96px;display:grid;grid-template-columns:auto 1fr;gap:6px 14px;align-items:start;cursor:pointer;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:14px 16px;transition:border-color .2s}
+.chk-it .tick{width:26px;height:26px;border-radius:8px;border:2px solid var(--line);display:grid;place-items:center;margin-top:1px;transition:all .2s;color:transparent;font-weight:700;background:var(--sheet)}
+.chk-it.on{border-color:var(--green)}
+.chk-it.on .tick{background:var(--green);border-color:var(--green);color:#fff}
+.chk-it:target{box-shadow:0 0 0 3px var(--mint);border-color:var(--green)}
+.chk-it h3{margin:0;font-size:15.5px;line-height:1.6}
+.chk-it .ans,.chk-it .rec{grid-column:2;display:none}
+.chk-it.on .ans,.chk-it.on .rec{display:block;animation:pop .35s ease}
+@keyframes pop{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.chk-it .ans{margin:0;color:var(--sub);font-size:14px;line-height:1.8}
+.chk-it .ans em{font-style:normal;font-weight:700;color:var(--green);margin-right:6px}
+.chk-it .rec{font-size:12.5px;color:var(--sub);background:var(--mint);border-radius:10px;padding:8px 12px;line-height:1.7}
+.chk-it .rec b{color:var(--green);font-size:14.5px;margin-right:4px}
+.grp-next{justify-self:end;border:0;background:var(--ink);color:#fff;font:700 14px/1 inherit;padding:12px 18px;border-radius:999px;cursor:pointer;margin-top:4px}
+.prog{position:sticky;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:5;margin:24px auto 0;max-width:520px;background:var(--ink);color:#fff;border-radius:999px;padding:10px 12px 10px 20px;display:flex;align-items:center;gap:14px;box-shadow:0 6px 20px rgba(0,0,0,.18)}
+.prog .n{font:700 15px/1 var(--fl);white-space:nowrap}
+.prog .bar{flex:1;height:6px;border-radius:9px;background:rgba(255,255,255,.2);overflow:hidden;min-width:40px}
+.prog .bar i{display:block;height:100%;width:0;background:#7FD3A8;transition:width .3s}
+@media (max-width:760px){.prog{position:fixed;left:max(12px,env(safe-area-inset-left,0px));right:max(12px,env(safe-area-inset-right,0px));top:var(--hh,72px);bottom:auto;margin:0;max-width:none;opacity:0;pointer-events:none;transform:translateY(-8px);transition:opacity .2s,transform .2s}.prog.show{opacity:1;pointer-events:auto;transform:none}}
+.prog a{color:var(--ink);background:#fff;border-radius:999px;padding:8px 14px;font-weight:700;font-size:13.5px;white-space:nowrap;text-decoration:none}
+.res{background:var(--sheet);border:1px solid var(--line);border-radius:22px;padding:28px;margin-top:22px;scroll-margin-top:90px}
+.res .score{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.res .score b{font:700 56px/1 var(--fl);color:var(--green)}
+.res .score span{font:700 20px/1 var(--fl);color:var(--sub)}
+.res .band{display:inline-block;margin-top:14px;background:var(--green);color:#fff;font-weight:700;border-radius:999px;padding:6px 14px;font-size:14px}
+.res h3{margin:12px 0 0;font-size:22px;line-height:1.5}
+.res p{color:var(--sub);line-height:1.85;margin:10px 0 0}
+.res .apps{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.res .apps span{border:1px solid var(--green);color:var(--green);border-radius:999px;padding:6px 12px;font-weight:700;font-size:13.5px}
+.res .apps span small{margin-left:6px;color:var(--sub);font-weight:400}
+.res .lbl{margin-top:22px;font-weight:700;font-size:14px}
+.res details{margin-top:18px}
+.res details summary{cursor:pointer;font-weight:700;color:var(--green)}
+.res ul{margin:10px 0 0;padding-left:1.2em;color:var(--sub);line-height:1.85;font-size:14px}
+.res .again{margin-top:20px;border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:10px 16px;font:700 13.5px/1 inherit;cursor:pointer;color:var(--ink)}
+</style><script>
+(function () {
+  var D = {"apps": {"yoyaku": "予約と LINE", "karte": "電子カルテ", "voice": "音声カルテ", "report": "健診と報告書", "image": "画像ビューア", "nyuin": "入院カルテ", "zaiko": "在庫と発注", "kintai": "勤怠", "keiei": "経営の数字", "koguchi": "小口と領収書", "bunken": "文献ライブラリ", "tel": "昼休みの電話の自動応答（付帯サービス）"}, "bands": [[1, "まずは1つから", "ラマルクは全部を一度に入れなくても使えます。当てはまった所から1つか2つ、無料でお試しいただけます。"], [6, "つなげると効く", "バラバラの仕組みを1本につなぐと、同じことを何度も打ち直さずに済み、手間がまとめて減ります。"], [15, "病院まるごと", "予約・問診・カルテ・報告書・LINE・勤怠を、ラマルクは1本につなぎます。今の仕組みと並べて動かし、確かめてから切り替えられます。"]], "head": {"まずは1つから": "困っている所が、はっきりしています", "つなげると効く": "困りごとが、いくつかの仕事にまたがっています", "病院まるごと": "病院のあちこちで、同じ種類の手間が起きています"}};
+  function $(s, r) { return (r || document).querySelector(s); }
+  function $$(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+  function update() {
+    var on = $$('.chk-it.on'), n = on.length, total = $$('.chk-it').length;
+    $$('.grp').forEach(function (g) {
+      var k = $$('.chk-it.on', g).length;
+      $('.cnt', g).textContent = k + ' / ' + $$('.chk-it', g).length;
+      g.classList.toggle('has', k > 0);
+    });
+    $('#p-n').textContent = n + ' / ' + total;
+    $('#p-bar').style.width = (n / total * 100) + '%';
+    $('#r-n').textContent = n;
+    var band = null;
+    D.bands.forEach(function (b) { if (n >= b[0]) band = b; });
+    $('#r-band').hidden = !band; $('#r-more').hidden = !n;
+    if (!band) { $('#r-h').textContent = '当てはまるものを押すと、ここに結果が出ます'; $('#r-p').textContent = ''; return; }
+    $('#r-band').textContent = band[1]; $('#r-h').textContent = D.head[band[1]]; $('#r-p').textContent = band[2];
+    var cnt = {}, roles = {};
+    on.forEach(function (it) { cnt[it.dataset.app] = (cnt[it.dataset.app] || 0) + 1; var g = it.closest('.grp').dataset.role; roles[g] = (roles[g] || 0) + 1; });
+    var top = Object.keys(cnt).sort(function (a, b) { return cnt[b] - cnt[a]; }).slice(0, 3);
+    $('#r-apps').innerHTML = '';
+    top.forEach(function (k) { var s = document.createElement('span'); s.textContent = D.apps[k]; var m = document.createElement('small'); m.textContent = cnt[k] + '個'; s.appendChild(m); $('#r-apps').appendChild(s); });
+    var best = Object.keys(roles).sort(function (a, b) { return roles[b] - roles[a]; })[0];
+    $('#r-role').textContent = best === '全職種' ? 'いちばん多かったのは、職種をまたぐ手間でした。' : 'いちばん多かったのは「' + best + '」の手間でした。';
+    var ul = $('#r-list'); ul.innerHTML = '';
+    on.forEach(function (it) { var li = document.createElement('li'); li.textContent = it.dataset.ans; ul.appendChild(li); });
+  }
+  document.addEventListener('click', function (e) {
+    var it = e.target.closest('.chk-it');
+    if (it) { it.classList.toggle('on'); update(); return; }
+    var nx = e.target.closest('.grp-next');
+    if (nx) {
+      var g = nx.closest('.grp'), next = g.nextElementSibling;
+      g.open = false;
+      if (next && next.classList.contains('grp')) { next.open = true; $('summary', next).scrollIntoView({ behavior: 'smooth' }); }
+      else { $('#result').scrollIntoView({ behavior: 'smooth' }); }
+      return;
+    }
+    if (e.target.closest('.again')) {
+      $$('.chk-it.on').forEach(function (x) { x.classList.remove('on'); });
+      $$('.grp').forEach(function (g, i) { g.open = i === 0; });
+      update(); $('.grp summary').scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+  function openHash() {
+    var id = decodeURIComponent(location.hash.slice(1)); if (!id) return;
+    var t = document.getElementById(id); if (!t || !t.classList.contains('chk-it')) return;
+    var g = t.closest('.grp'); g.open = true; setTimeout(function () { t.scrollIntoView({ block: 'center' }); }, 50);
+  }
+  // スマホは下にサイト共通のボタンがあるので、進み具合はロゴの下に出す（チェック欄が見えている間だけ）
+  function placeProg() {
+    var h = document.querySelector('header'), g = $('.game'), p = $('.prog');
+    if (h) document.documentElement.style.setProperty('--hh', (h.getBoundingClientRect().bottom + 8) + 'px');
+    var r = g.getBoundingClientRect();
+    p.classList.toggle('show', r.top < innerHeight * .6 && r.bottom > 120);
+  }
+  window.addEventListener('scroll', placeProg, { passive: true });
+  window.addEventListener('resize', placeProg);
+  window.addEventListener('hashchange', openHash);
+  function start() { update(); openHash(); placeProg(); }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
+})();
+</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-25HPJWNXWL"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","G-25HPJWNXWL");</script>
+</head><body>
+<header class="top solid" id="top">
+  <a class="brand" href="index.html"><img src="assets/img/lamarck-mark.png" alt="" width="28" height="28">LAMARCK</a>
+  <nav class="menu" aria-label="サイト内"><a href="system.html">しくみ</a><a href="effect.html">導入の効果</a><a href="price.html">導入と費用</a><a href="trust.html">安心</a><a href="flow.html">導入の流れ</a><a href="company.html">会社</a></nav>
+  <a class="cta" href="request.html">資料を受け取る</a>
+</header>
+<main>
+<section class="page-head noill"><div class="wrap"><div><div class="kick">Check</div><h1>こんなことで、<br><em>困っていませんか</em>？</h1><p>職種ごとに、当てはまるものを押してください。押すと、ラマルクでどう変わるかが開きます。最後に、当てはまった数で結果が出ます。数字は導入している荻窪ツイン動物病院の2026年の記録です。</p></div></div></section><section class="sec "><div class="wrap"><div class="kick">Check</div><h2>1職種ずつ、チェック</h2><div class="game"><details class="grp" data-role="全職種" open><summary><span class="av"><svg class="ico" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" ><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><path d="M16 3.128a4 4 0 0 1 0 7.744" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><circle cx="9" cy="7" r="4" /></svg></span><b>全職種</b><span class="cnt">0 / 4</span><span class="chev" aria-hidden="true"></span></summary><div class="grp-body"><div class="chk-it" id="nijuu" data-app="karte" data-ans="1本につながっているので、予約で入った情報が問診へ、問診がカルテへ、カルテが報告書と会計へ、そのまま流れる。"><span class="tick" aria-hidden="true">✓</span><h3>同じ飼い主さん・同じ子の情報を、いくつもの画面や紙に打ち直している</h3><p class="ans"><em>ラマルクでは</em>1本につながっているので、予約で入った情報が問診へ、問診がカルテへ、カルテが報告書と会計へ、そのまま流れる。</p></div><div class="chk-it" id="gamen" data-app="karte" data-ans="カルテの最初の画面に、確かめたいことがまとまっている。"><span class="tick" aria-hidden="true">✓</span><h3>ワクチン歴・体重・会計・処方を見るのに、タブを何度も切り替えている</h3><p class="ans"><em>ラマルクでは</em>カルテの最初の画面に、確かめたいことがまとまっている。</p></div><div class="chk-it" id="hikitsugi" data-app="nyuin" data-ans="入院カルテに書けば、そのまま引き継げる。"><span class="tick" aria-hidden="true">✓</span><h3>次に出勤するスタッフへの引き継ぎを、口頭やメモで伝えている</h3><p class="ans"><em>ラマルクでは</em>入院カルテに書けば、そのまま引き継げる。</p></div><div class="chk-it" id="hacchu" data-app="zaiko" data-ans="在庫をその場で共有し、すぐ発注できる。発注忘れや二重発注が減る。"><span class="tick" aria-hidden="true">✓</span><h3>足りない物をホワイトボードや紙に書き、発注を忘れる</h3><p class="ans"><em>ラマルクでは</em>在庫をその場で共有し、すぐ発注できる。発注忘れや二重発注が減る。</p></div><button type="button" class="grp-next">次へ：受付 →</button></div></details><details class="grp" data-role="受付"><summary><span class="av"><img src="assets/img/faces/reception.webp" alt="" width="44" height="44" loading="lazy"></span><b>受付</b><span class="cnt">0 / 6</span><span class="chev" aria-hidden="true"></span></summary><div class="grp-body"><div class="chk-it" id="netyoyaku" data-app="yoyaku" data-ans="LINE の予約は見れば分かる画面なので、飼い主さんへの説明がいらない。"><span class="tick" aria-hidden="true">✓</span><h3>初診の方に、ネット予約の手順を書いた紙を渡して説明している</h3><p class="ans"><em>ラマルクでは</em>LINE の予約は見れば分かる画面なので、飼い主さんへの説明がいらない。</p><div class="rec"><b>731件</b>LINE からの予約。8〜10月の3か月。491世帯が利用し、うち91件ははじめての方の予約でした。</div></div><div class="chk-it" id="yoyaku" data-app="karte" data-ans="予約表と電子カルテを別々に管理しない。来院の受付も同じ画面で。"><span class="tick" aria-hidden="true">✓</span><h3>予約表と電子カルテを別々に開き、同じことを2回打っている</h3><p class="ans"><em>ラマルクでは</em>予約表と電子カルテを別々に管理しない。来院の受付も同じ画面で。</p></div><div class="chk-it" id="aki" data-app="karte" data-ans="会計の画面で、担当者の空いている日と時間がひと目で分かり、電子カルテからそのまま予約できる。"><span class="tick" aria-hidden="true">✓</span><h3>次の予約を取るのに、会計のあと予約表を開き直して空きを探している</h3><p class="ans"><em>ラマルクでは</em>会計の画面で、担当者の空いている日と時間がひと目で分かり、電子カルテからそのまま予約できる。</p></div><div class="chk-it" id="raiin" data-app="karte" data-ans="予約の入った患者さんは、自動で来院予定に並ぶ。"><span class="tick" aria-hidden="true">✓</span><h3>予約表を見ながら当日の患者さんを来院予定に入れ、カルテ棚から出しておく</h3><p class="ans"><em>ラマルクでは</em>予約の入った患者さんは、自動で来院予定に並ぶ。</p></div><div class="chk-it" id="vaxdm" data-app="yoyaku" data-ans="ワクチンのお知らせを LINE で送れる。"><span class="tick" aria-hidden="true">✓</span><h3>ワクチンのお知らせを、はがきで送っている</h3><p class="ans"><em>ラマルクでは</em>ワクチンのお知らせを LINE で送れる。</p></div><div class="chk-it" id="kekka" data-app="report" data-ans="結果は LINE で届き、飼い主さんは携帯に保存できる。印刷も郵送もいらない。"><span class="tick" aria-hidden="true">✓</span><h3>健診の結果を印刷し、手書きを添えて郵送している</h3><p class="ans"><em>ラマルクでは</em>結果は LINE で届き、飼い主さんは携帯に保存できる。印刷も郵送もいらない。</p><div class="rec"><b>97%</b>健診結果の LINE の開封率。6〜10月に送った66件のうち、64件が開かれました。</div></div><button type="button" class="grp-next">次へ：獣医師 →</button></div></details><details class="grp" data-role="獣医師"><summary><span class="av"><img src="assets/img/faces/vet.webp" alt="" width="44" height="44" loading="lazy"></span><b>獣医師</b><span class="cnt">0 / 9</span><span class="chev" aria-hidden="true"></span></summary><div class="grp-body"><div class="chk-it" id="karte" data-app="voice" data-ans="話すだけでカルテと要点の下書き。"><span class="tick" aria-hidden="true">✓</span><h3>診察のあと、カルテを打つ時間がとれない</h3><p class="ans"><em>ラマルクでは</em>話すだけでカルテと要点の下書き。</p><div class="rec"><b>45秒</b>音声カルテの手直し。録音から下書きができた後、確認してカルテへ移す手作業の中央値（10月の実測49件）。9月は239件の診察を音声カルテで記録。</div></div><div class="chk-it" id="kenshin" data-app="report" data-ans="AI が過去の結果も確かめて報告書の下書きを作る。獣医師は確かめて送るだけで、書き漏れも防げる。"><span class="tick" aria-hidden="true">✓</span><h3>血液検査の結果を読み、過去の記録を読み返してから健診のコメントを書いている</h3><p class="ans"><em>ラマルクでは</em>AI が過去の結果も確かめて報告書の下書きを作る。獣医師は確かめて送るだけで、書き漏れも防げる。</p></div><div class="chk-it" id="kenshinpc" data-app="report" data-ans="健診の報告書は、携帯で作れる画面。印刷せず、送信ボタンで報告が終わる。"><span class="tick" aria-hidden="true">✓</span><h3>健診の報告書を作るのに、パソコンの前に座る時間がいる</h3><p class="ans"><em>ラマルクでは</em>健診の報告書は、携帯で作れる画面。印刷せず、送信ボタンで報告が終わる。</p></div><div class="chk-it" id="report" data-app="report" data-ans="報告書の下書きが簡単にでき、報告の遅れが減った。"><span class="tick" aria-hidden="true">✓</span><h3>専門診療の報告書づくりが重く、報告が遅れがち</h3><p class="ans"><em>ラマルクでは</em>報告書の下書きが簡単にでき、報告の遅れが減った。</p></div><div class="chk-it" id="shokai" data-app="karte" data-ans="日付を選ぶと、その日からの記録で紹介状が自動で作られる。"><span class="tick" aria-hidden="true">✓</span><h3>紹介状を、毎回いちから書いている</h3><p class="ans"><em>ラマルクでは</em>日付を選ぶと、その日からの記録で紹介状が自動で作られる。</p></div><div class="chk-it" id="kenshinfile" data-app="karte" data-ans="その患者さんのカルテの中で、過去の健診の結果を見られる。"><span class="tick" aria-hidden="true">✓</span><h3>健診の結果を PDF や PowerPoint で保存し、フォルダの中から探している</h3><p class="ans"><em>ラマルクでは</em>その患者さんのカルテの中で、過去の健診の結果を見られる。</p></div><div class="chk-it" id="images" data-app="image" data-ans="手術の写真・内視鏡・レントゲン・エコー・CT・MRI を、まとめて飼い主さんに見せられる。"><span class="tick" aria-hidden="true">✓</span><h3>レントゲンはこのソフト、手術の写真は別のフォルダ。見せるたびに探している</h3><p class="ans"><em>ラマルクでは</em>手術の写真・内視鏡・レントゲン・エコー・CT・MRI を、まとめて飼い主さんに見せられる。</p></div><div class="chk-it" id="yasumi" data-app="karte" data-ans="携帯から、当日の血液検査・レントゲン・エコーの結果を確かめられる。"><span class="tick" aria-hidden="true">✓</span><h3>休みの日も、担当の患者さんの検査結果が気になる</h3><p class="ans"><em>ラマルクでは</em>携帯から、当日の血液検査・レントゲン・エコーの結果を確かめられる。</p></div><div class="chk-it" id="bunken" data-app="bunken" data-ans="文献の信頼性を数値で示し、信頼性の高い文献をすぐ確かめられる。"><span class="tick" aria-hidden="true">✓</span><h3>論文が多く、どれを信じて読めばよいか迷う</h3><p class="ans"><em>ラマルクでは</em>文献の信頼性を数値で示し、信頼性の高い文献をすぐ確かめられる。</p></div><button type="button" class="grp-next">次へ：動物看護師 →</button></div></details><details class="grp" data-role="動物看護師"><summary><span class="av"><img src="assets/img/faces/nurse.webp" alt="" width="44" height="44" loading="lazy"></span><b>動物看護師</b><span class="cnt">0 / 2</span><span class="chev" aria-hidden="true"></span></summary><div class="grp-body"><div class="chk-it" id="nyuin" data-app="nyuin" data-ans="同意書をいただくと自動で入院の手続きに入り、カルテから自動で書き写されるので、写し間違いがない。"><span class="tick" aria-hidden="true">✓</span><h3>入院のたびに、体重・体温・入院理由・飲んでいる薬を紙やホワイトボードに書き写している</h3><p class="ans"><em>ラマルクでは</em>同意書をいただくと自動で入院の手続きに入り、カルテから自動で書き写されるので、写し間違いがない。</p></div><div class="chk-it" id="tel" data-app="tel" data-ans="昼休みの電話を自動応答に任せられる。"><span class="tick" aria-hidden="true">✓</span><h3>昼休みも予約の電話が鳴り、休憩が途切れる</h3><p class="ans"><em>ラマルクでは</em>昼休みの電話を自動応答に任せられる。</p><div class="rec"><b>12件/日</b>昼休みの電話に自動で応答。9月前半の15日間で180件。休憩中のスタッフが電話に出なくて済みます（付帯サービスで、月額とは別料金）。</div></div><button type="button" class="grp-next">次へ：トリマー →</button></div></details><details class="grp" data-role="トリマー"><summary><span class="av"><img src="assets/img/faces/groomer.webp" alt="" width="44" height="44" loading="lazy"></span><b>トリマー</b><span class="cnt">0 / 2</span><span class="chev" aria-hidden="true"></span></summary><div class="grp-body"><div class="chk-it" id="hotel" data-app="yoyaku" data-ans="予約の取り方を細かく決められるので、診察・ホテル・トリミングまで病院の予約を LINE で受けられる。予約の電話がはっきり減った。"><span class="tick" aria-hidden="true">✓</span><h3>ネット予約で受けられるのは診察だけ。ホテルとトリミングは複雑で載せられない</h3><p class="ans"><em>ラマルクでは</em>予約の取り方を細かく決められるので、診察・ホテル・トリミングまで病院の予約を LINE で受けられる。予約の電話がはっきり減った。</p></div><div class="chk-it" id="hotelnyuin" data-app="nyuin" data-ans="入院カルテで、ペットホテルと入院を一緒に管理できる。"><span class="tick" aria-hidden="true">✓</span><h3>ペットホテルと入院を、別々の台帳で管理している</h3><p class="ans"><em>ラマルクでは</em>入院カルテで、ペットホテルと入院を一緒に管理できる。</p></div><button type="button" class="grp-next">次へ：院長 →</button></div></details><details class="grp" data-role="院長"><summary><span class="av"><img src="assets/img/faces/director.webp" alt="" width="44" height="44" loading="lazy"></span><b>院長</b><span class="cnt">0 / 5</span><span class="chev" aria-hidden="true"></span></summary><div class="grp-body"><div class="chk-it" id="waku" data-app="kintai" data-ans="勤怠に出勤日を入れると、予約の枠に自動で反映される。"><span class="tick" aria-hidden="true">✓</span><h3>出勤日が決まるたびに、予約システムの枠を開け直している</h3><p class="ans"><em>ラマルクでは</em>勤怠に出勤日を入れると、予約の枠に自動で反映される。</p></div><div class="chk-it" id="uriage" data-app="keiei" data-ans="物販・担当医別の売上・前年同月比・来院数・人件費が、毎月ひと目で分かる。"><span class="tick" aria-hidden="true">✓</span><h3>売上の分析を、締めてから自分で表にまとめている</h3><p class="ans"><em>ラマルクでは</em>物販・担当医別の売上・前年同月比・来院数・人件費が、毎月ひと目で分かる。</p></div><div class="chk-it" id="kintai" data-app="kintai" data-ans="スタッフの勤怠の集計がアプリでできる。"><span class="tick" aria-hidden="true">✓</span><h3>月末に、スタッフの勤怠を手で集計している</h3><p class="ans"><em>ラマルクでは</em>スタッフの勤怠の集計がアプリでできる。</p></div><div class="chk-it" id="koguchi" data-app="koguchi" data-ans="小口現金と領収書をアプリで管理。"><span class="tick" aria-hidden="true">✓</span><h3>小口現金と領収書の管理が、ノートと封筒のまま</h3><p class="ans"><em>ラマルクでは</em>小口現金と領収書をアプリで管理。</p></div><div class="chk-it" id="saas" data-app="yoyaku" data-ans="予約はカルテと1つの仕組みに。電話の自動応答は付帯サービスで置き換えられる。"><span class="tick" aria-hidden="true">✓</span><h3>予約と電話の自動応答に、カルテとは別の会社へ毎月払っている</h3><p class="ans"><em>ラマルクでは</em>予約はカルテと1つの仕組みに。電話の自動応答は付帯サービスで置き換えられる。</p><div class="rec"><b>6.5万円/月</b>やめられた外部サービス。予約システムと電話の自動応答を置き換え、年に約78万円の契約をやめました。</div></div><button type="button" class="grp-next">結果を見る →</button></div></details></div><div class="prog"><span class="n">✓ <span id="p-n">0 / 28</span></span><span class="bar"><i id="p-bar"></i></span><a href="#result">結果を見る</a></div></div></section><section class="sec white"><div class="wrap"><div class="kick">Result</div><h2>あなたの病院の結果</h2><div class="res" id="result"><div class="score"><b id="r-n">0</b><span>個 当てはまりました</span></div><span class="band" id="r-band" hidden></span><h3 id="r-h"></h3><p id="r-p"></p><div id="r-more" hidden><p id="r-role"></p><div class="lbl">はじめに試すとよいアプリ</div><div class="apps" id="r-apps"></div><details><summary>当てはまった項目で、ラマルクができること</summary><ul id="r-list"></ul></details></div><button type="button" class="again">はじめからやり直す</button></div><a class="more" href="effect.html">職種ごとに減ったことを、まとめて見る</a></div></section><section class="sec"><div class="wrap"><div class="cta-band">
+  <div><div class="kick">Request</div><h2>まずは資料を、<br>LINE で受け取ってください。</h2>
+    <p>病院名・院長名・（開業前の方は）開業予定の時期をお送りください。確認のうえ、詳しい資料と画面の動画をお届けします。</p></div>
+  <div class="act"><a class="btn w" href="https://line.me/R/ti/p/@310unbcy" rel="noopener">LINE で資料を受け取る</a><a class="btn o" href="request.html">資料請求の流れを見る</a>
+    <small>LINE ID：@310unbcy　／　LINE を使わない方は info@lamarck.co.jp へ</small></div>
+</div></div></section>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div><a class="brand" href="index.html"><img src="assets/img/lamarck-mark.png" alt="" width="28" height="28">LAMARCK</a>
+      <p>動物病院・クリニックのためのオールインワン業務システム。<br>ラマルク株式会社　東京都杉並区上荻一丁目23番18号</p></div>
+    <div><h4>Product</h4><ul><li><a href="system.html">しくみと画面</a></li><li><a href="effect.html">導入の効果</a></li><li><a href="price.html">導入と費用</a></li><li><a href="trust.html">安心の仕組み</a></li><li><a href="flow.html">導入の流れ</a></li></ul></div>
+    <div><h4>Company</h4><ul><li><a href="vision.html">理念と未来像</a></li><li><a href="company.html">会社概要</a></li><li><a href="insights.html">業界の動き</a></li><li><a href="security/">セキュリティ情報</a></li></ul></div>
+    <div><h4>Support</h4><ul><li><a href="faq.html">よくある質問</a></li><li><a href="request.html">資料請求</a></li><li><a href="connect.html">LINE・X</a></li><li><a href="members.html">導入医院の方へ</a></li><li><a href="privacy.html">プライバシーポリシー</a></li></ul></div>
+  </div>
+  <div class="copy wrap">© 2026 ラマルク株式会社</div>
+</footer>
+<div class="dock"><button type="button" class="up" aria-label="ページの先頭へ戻る">↑</button><button type="button" class="menu-btn" aria-expanded="false" aria-controls="sheet">☰ メニュー</button></div>
+<div class="sheet" id="sheet" hidden><nav aria-label="ページの一覧"><div class="sheet-h"><b>見たいページ</b><button type="button" class="sheet-x" aria-label="閉じる">×</button></div>
+  <a href="index.html">トップ</a><a href="system.html">しくみと画面</a><a href="effect.html">導入の効果</a><a href="price.html">導入と費用</a><a href="price.html#intro">紹介動画</a><a href="trust.html">安心の仕組み</a><a href="flow.html">導入の流れ</a><a href="faq.html">よくある質問</a><a href="vision.html">理念と未来像</a><a href="company.html">会社概要</a><a class="req" href="request.html">資料を受け取る</a>
+</nav></div>
+</body></html>
