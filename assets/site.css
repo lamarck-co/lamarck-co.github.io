@@ -332,3 +332,5 @@ img[src*="assets/img/roles/"]{mix-blend-mode:multiply}
 .btn.o{border:1px solid var(--faint);color:var(--ink)}
 /* 院長 11/7：常に出ている右上の「資料を受け取る」だけは濃い緑のボタンでよい */
 .cta{background:var(--green);color:#fff;border:0;padding:10px 16px}
+/* 2026-11-07 スマホで資料請求の帯の見出しが3行に折れる（26px では「LINE で受け取ってください。」が幅に入らない）→ 字と余白を少し小さく */
+@media (max-width:640px){.cta-band{padding:28px 18px}.cta-band h2{font-size:min(26px,5.2vw);line-height:1.45}}
