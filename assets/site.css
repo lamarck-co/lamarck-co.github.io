@@ -293,3 +293,42 @@ h3.ih .ico{color:var(--green);width:24px;height:24px}
 .box .ic.face{width:56px;height:56px;padding:0;border-radius:50%;overflow:hidden;background:#F7F1E6;box-shadow:0 0 0 3px var(--sheet),0 0 0 4px var(--line)}
 .box .ic.face img{display:block;width:100%;height:100%;object-fit:cover}
 .box .more{margin-top:12px}
+
+/* 2026-11-07 職種の顔のイラストをやめ、白い陶器の小物＋番号＋上辺の色の線（院長が A と C を選択） */
+.box.role{position:relative;border-top:3px solid var(--rcol,var(--green));padding-top:22px}
+.box.role.r1{--rcol:#1f5a45}.box.role.r2{--rcol:#1F74B5}.box.role.r3{--rcol:#12857D}.box.role.r4{--rcol:#93522B}.box.role.r5{--rcol:#5E4392}.box.role.r6{--rcol:#9A7310}
+.box.role .robj{position:absolute;top:10px;right:12px;width:96px;height:96px;pointer-events:none}
+.box.role .robj img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;display:block}
+.box.role .rhead{display:flex;align-items:baseline;gap:12px;padding-right:96px}
+.box.role .rhead .no{font:300 34px/1 var(--fl);color:#b8743a;letter-spacing:.02em}
+.box.role h3{font-size:22px;margin-top:6px;padding-right:96px}
+.box.role p,.box.role .ul{margin-top:14px}
+@media (max-width:640px){.box.role .robj{width:78px;height:78px}.box.role .rhead,.box.role h3{padding-right:78px}.box.role .rhead .no{font-size:28px}}
+/* 困りごとチェックの見出しの小さな絵（44px）も小物に */
+img[src*="assets/img/roles/"]{mix-blend-mode:multiply}
+/* 2026-11-07 検品の✗：数字の単位だけが次の行に落ちない・画面紹介の見出しを均等に折る */
+.num b{white-space:nowrap}
+.pane h3{text-wrap:balance}
+
+/* 2026-11-07 院長の決まり「濃い色の地に白い文字は使わない」：帯は淡い地に濃い文字・主ボタンは白地＋緑の太い縁 */
+.sec.band{background:var(--mint);color:var(--ink)}
+.sec.band h2{color:var(--ink)}.sec.band h2 em{color:var(--green)}
+.sec.band .kick{color:var(--green)}.sec.band .kick::before{background:var(--green)}
+.sec.band .intro,.sec.band .note{color:var(--sub)}
+.sec.band .num{background:var(--sheet);border-color:var(--line)}
+.sec.band .num b{color:var(--green)}.sec.band .num b small{color:var(--ink)}
+.sec.band .num .lbl{color:var(--ink)}.sec.band .num p{color:var(--sub)}
+.sec.band .spot::before{background:radial-gradient(380px circle at var(--mx,50%) var(--my,50%),rgba(20,88,61,.06),transparent 45%)}
+.cta-band{background:var(--mint);color:var(--ink);border:1px solid #CFE3D8}
+.cta-band h2{color:var(--ink)}.cta-band p,.cta-band small{color:var(--sub)}
+.cta-band .kick{color:var(--green)}.cta-band .kick::before{background:var(--green)}
+.btn.p,.cta,.sheet a.req{background:var(--sheet);color:var(--green);border:2px solid var(--green);border-bottom-width:4px}
+.cta{padding:8px 15px 6px}
+.btn.o{border-color:var(--green);color:var(--green);background:transparent}
+.tabs button[aria-selected="true"]{color:var(--green)}
+.tabs .ink{background:var(--sheet);box-shadow:inset 0 0 0 2px var(--green)}
+.dock .menu-btn{background:var(--sheet);border:2px solid var(--ink);color:var(--ink)}
+.btn.w{border:2px solid var(--green);border-bottom-width:4px}
+.btn.o{border:1px solid var(--faint);color:var(--ink)}
+/* 院長 11/7：常に出ている右上の「資料を受け取る」だけは濃い緑のボタンでよい */
+.cta{background:var(--green);color:#fff;border:0;padding:10px 16px}
