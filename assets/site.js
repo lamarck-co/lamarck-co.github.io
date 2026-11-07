@@ -1,7 +1,15 @@
 // ラマルク サイト共通の動き（カーソルの光・スクロールで現れる・数字が数え上がる・画面ツアーのタブ）
 (() => {
   // 新しいページは一番上から（埋め込み表示で外側のスクロールが残る時にも）
-  if (!location.hash) { try { history.scrollRestoration = 'manual'; } catch (e) {} addEventListener('load', () => { const t = document.body.firstElementChild; if (t && scrollY === 0) t.scrollIntoView({ block: 'start' }); }); }
+  // 2026-11-07 院長「メニューで変な所に飛ぶ・微妙にずれる」：以前は最初の要素（位置固定のヘッダー）へ scrollIntoView していて、
+  // iPhone の Safari で着地がずれた。# なし＝素直に一番上へ／# あり＝ヘッダーの下へ（読み込みで伸びても合わせ直す）
+  try { history.scrollRestoration = 'manual'; } catch (e) {}
+  if (!location.hash) {
+    addEventListener('pageshow', e => { if (!e.persisted) scrollTo(0, 0); });
+  } else {
+    const go = () => { const t = document.getElementById(decodeURIComponent(location.hash.slice(1))); if (t) t.scrollIntoView({ block: 'start' }); };
+    addEventListener('load', () => { go(); setTimeout(go, 350); setTimeout(go, 1000); });
+  }
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const fine = matchMedia('(pointer: fine)').matches;
 

@@ -334,3 +334,14 @@ img[src*="assets/img/roles/"]{mix-blend-mode:multiply}
 .cta{background:var(--green);color:#fff;border:0;padding:10px 16px}
 /* 2026-11-07 スマホで資料請求の帯の見出しが3行に折れる（26px では「LINE で受け取ってください。」が幅に入らない）→ 字と余白を少し小さく */
 @media (max-width:640px){.cta-band{padding:28px 18px}.cta-band h2{font-size:min(26px,5.2vw);line-height:1.45}}
+/* 2026-11-07 院長「なるべく行数は少なく収まりよく」：スマホでページの見出しが決めた行数より折れない大きさに */
+@media (max-width:640px){.page-head h1{font-size:min(32px,7.6vw)}}
+@media (max-width:640px){.page-head h1{font-size:min(32px,6.6vw)}}
+h2{text-wrap:balance}
+.page-head h1{font-size:clamp(30px,3.6vw,48px)}
+@media (max-width:640px){.page-head h1{font-size:min(32px,6.6vw)}h2{font-size:min(26px,6.4vw)}}
+@media (max-width:640px){.page-head h1{font-size:min(32px,6.2vw)}.sec h2{font-size:min(26px,6.4vw)}}
+@media (min-width:641px){.sec h3{text-wrap:balance}}
+@media (max-width:640px){.cta-band h2,.sec .cta-band h2{font-size:min(26px,5.2vw)}}
+/* # 付きのリンクで飛んだとき、固定のヘッダーに隠れない（ヘッダー72px＋余白） */
+[id]{scroll-margin-top:calc(88px + env(safe-area-inset-top,0px))}
