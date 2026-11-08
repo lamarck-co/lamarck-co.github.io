@@ -8,7 +8,8 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--fh);line-height:1.8;-webkit-font-smoothing:antialiased;word-break:auto-phrase}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--fh);line-height:1.8;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word}
+/* 日本語はビルドで入れた <wbr>（BudouX の文の区切り）の所でだけ折る。auto-phrase は Chrome だけで、区切り方も違うので使わない（2026-11-09） */
 img{max-width:100%;height:auto}
 a{color:inherit}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
@@ -126,6 +127,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
   .g3,.g4,.nums,.steps{grid-template-columns:repeat(2,minmax(0,1fr))}
   .cta-band{grid-template-columns:1fr;padding:32px 24px}
   .foot .wrap{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .foot .wrap>:first-child{grid-column:1/-1}
 }
 @media (max-width:560px){
   .g2,.g3,.g4,.nums,.steps,.price{grid-template-columns:1fr}
