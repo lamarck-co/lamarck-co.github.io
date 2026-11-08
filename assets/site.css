@@ -236,7 +236,7 @@ h1 .c,h2 .c{color:var(--copper);font-family:var(--fl)}
   .split.rev > .ill{order:0}
   .pane{grid-template-columns:1fr;gap:16px}
   .pane{flex-basis:88%;align-content:start}
-  .shot{height:400px}
+  .shot{height:400px}.phone-f{height:372px}
   .timeline{grid-template-columns:1fr;gap:18px;text-align:left}
   .timeline::before{left:22px;right:auto;top:10px;bottom:10px;width:2px;height:auto;background:linear-gradient(180deg,var(--green),var(--copper))}
   .timeline li{display:grid;grid-template-columns:46px 1fr;gap:4px 14px;text-align:left}
