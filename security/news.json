@@ -1,5 +1,5 @@
 {
-"updated": "2026-11-08T10:33",
+"updated": "2026-11-09T07:50",
 "days": 45,
 "items": [
 {
@@ -2817,21 +2817,6 @@
 "title_ja": "NetScaler ADC・Gatewayの脆弱性（CVE-2026-88771等）",
 "summary_ja": "IPAがNetScaler ADCおよびNetScaler Gatewayに存在する複数の脆弱性（CVE-2026-88771、CVE-2026-88772等）に関する情報を公開した。",
 "link": "https://www.ipa.go.jp/security/security-alert/2026/alert20260928.html",
-"our_relation": "no",
-"our_status": null,
-"our_status_at": null,
-"topic": null
-},
-{
-"id": "b454e26d109021b2",
-"date": "2026-09-24",
-"source": "JPCERT/CC",
-"kind": "公的機関",
-"category": "脆弱性",
-"title": "注意喚起: F5 BIG-IP Access Policy Managerにおけるヒープベースのバッファオーバーフローの脆弱性（CVE-2026-94127）に関する注意喚起 (公開)",
-"title_ja": "F5 BIG-IP APMにヒープバッファオーバーフロー脆弱性",
-"summary_ja": "JPCERTがF5 BIG-IP Access Policy Managerのヒープベースのバッファオーバーフロー脆弱性（CVE-2026-94127）について注意喚起を公開した。",
-"link": "https://www.jpcert.or.jp/at/2026/at260028.html",
 "our_relation": "no",
 "our_status": null,
 "our_status_at": null,
