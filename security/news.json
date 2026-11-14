@@ -1,7 +1,22 @@
 {
-"updated": "2026-11-14T07:50",
+"updated": "2026-11-15T07:50",
 "days": 45,
 "items": [
+{
+"id": "b58e8e6c37edfa61",
+"date": "2026-11-14",
+"source": "The Hacker News",
+"kind": "ニュース",
+"category": "悪用の確認",
+"title": "Attackers Exploit UnrealIRCd Flaw That Enables Server-Level Command Injection",
+"title_ja": "UnrealIRCdの高深刻度脆弱性、悪用をCISAが確認",
+"summary_ja": "オープンソースIRCサーバー「UnrealIRCd」にサーバーレベルのコマンドインジェクションを可能にする脆弱性があり、CISAが既知悪用脆弱性カタログへ追加した。積極的な悪用が報告されている。",
+"link": "https://thehackernews.com/2026/11/attackers-exploit-unrealircd-flaw-that.html",
+"our_relation": "no",
+"our_status": null,
+"our_status_at": null,
+"topic": null
+},
 {
 "id": "e05f7a78ce38d83c",
 "date": "2026-11-13",
@@ -451,21 +466,6 @@
 "our_status": null,
 "our_status_at": null,
 "topic": null
-},
-{
-"id": "50b7d482cfd778ee",
-"date": "2026-11-12",
-"source": "The Hacker News",
-"kind": "ニュース",
-"category": "攻撃の動向",
-"title": "186 Fake AI Domains Redirect Users to ClickFix Lures, Browser Malware, and Search Hijackers",
-"title_ja": "AIツールを装った偽ドメイン186件がマルウェアを配布",
-"summary_ja": "AIツールに見せかけた偽ドメインがClickFix型誘導やブラウザ乗っ取りマルウェアの配布に使われており、検索ハイジャック拡張機能も確認されている。",
-"link": "https://thehackernews.com/2026/11/186-fake-ai-domains-redirect-users-to.html",
-"our_relation": "no",
-"our_status": "関係なし",
-"our_status_at": "2026-10-22 11:37",
-"topic": "Chrome の ClickFix 警告機能"
 },
 {
 "id": "412e6a01568a35f7",
